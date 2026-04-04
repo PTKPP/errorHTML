@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: #f0f0f5;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.mac-window {
+    width: 400px;
+    min-height: 300px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    border: 1px solid #ccc;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mac-header {
+    height: 30px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 8px;
+}
+
+.mac-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.mac-btn.red { background-color: #ff5f57; }
+.mac-btn.yellow { background-color: #ffbd2e; }
+.mac-btn.green { background-color: #28c940; }
+
+.error {
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    flex: 1;
+}
+
+.error h1 {
+    font-size: 5rem;
+    color: #2c3e50;
+}
+
+.error h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.error p {
+    font-size: 1rem;
+    margin: 4px 0;
+}
+
+.error .subtitle {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.error-effect {
+    width: 150px;
+    height: 4px;
+    margin: 20px auto 0 auto;
+    background: linear-gradient(90deg, rgba(44,62,80,0) 0%, rgba(44,62,80,0.8) 50%, rgba(44,62,80,0) 100%);
+    border-radius: 2px;
+    animation: glowMove 1.5s infinite;
+}
+
+.error::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.05) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.error * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes glowMove {
+    0% { transform: translateX(-150px); opacity: 0; }
+    50% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(150px); opacity: 0; }
+}
+
+footer {
+    text-align: center;
+    color: #222;
+    padding: 10px 0;
+    background-color: #f0f0f5;
+}
+
+@media (max-width: 500px) {
+    .mac-window { width: 90%; }
+    .error h1 { font-size: 4rem; }
+    .error h2 { font-size: 1.4rem; }
+}
